@@ -21,6 +21,7 @@ ThemeData themeFactory(
   final splashColor = amoled ? Colors.black : theme.splashColor;
 
   return theme.copyWith(
+    useMaterial3: true,
     pageTransitionsTheme: const PageTransitionsTheme(
       builders: {
         TargetPlatform.android: CupertinoPageTransitionsBuilder(),
