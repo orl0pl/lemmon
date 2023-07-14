@@ -9,16 +9,19 @@ import 'liftoff_media_provider.dart';
 class RedgifProvider implements LiftoffMediaProvider {
   const RedgifProvider();
   static String? _authToken;
+  static RegExp urlExpression = RegExp(r'(www\.)?redgifs\.com');
 
   Future<Uri> _getRedgifUrl(Uri url, {allowRetries = true}) async {
     final token = await _getAuthtoken();
     final id = basename(url.path);
 
-    final headers = {HttpHeaders.authorizationHeader: 'Bearer $token'};
-    var requestUrl = 'https://api.redgifs.com/v2/gifs/$id';
-    if (Platform.isAndroid) {
-      requestUrl = '$requestUrl?user-agent=ExoPlayer';
-    }
+    final headers = {
+      HttpHeaders.authorizationHeader: 'Bearer $token',
+      HttpHeaders.userAgentHeader:
+          Platform.isAndroid ? 'ExoPlayer' : 'Liftoff/1.0'
+    };
+
+    final requestUrl = 'https://api.redgifs.com/v2/gifs/$id';
 
     final response = await http.get(Uri.parse(requestUrl), headers: headers);
 
@@ -41,7 +44,7 @@ class RedgifProvider implements LiftoffMediaProvider {
 
   @override
   bool providesFor(Uri url) {
-    return url.host == 'redgifs.com';
+    return urlExpression.hasMatch(url.host);
   }
 
   //TODO Get a real API Key
