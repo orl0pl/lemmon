@@ -32,11 +32,18 @@ class MyApp extends StatelessWidget {
                     supportedLocales: L10n.supportedLocales,
                     localizationsDelegates: l10nDelegates,
                     themeMode: state.theme,
-                    theme: themeFactory(primaryColor: state.primaryColorLight),
-                    darkTheme: themeFactory(
-                        primaryColor: state.primaryColorDark,
-                        amoled: state.useAmoled,
-                        dark: true),
+                    // theme: themeFactory(primaryColor: state.primaryColorLight),
+                    // darkTheme: themeFactory(
+                    //     primaryColor: state.primaryColorDark,
+                    //     amoled: state.useAmoled,
+                    //     dark: true),
+                    theme: ThemeData(
+                      useMaterial3: true,
+                      colorSchemeSeed: state.primaryColor,
+                    ),
+                    darkTheme: ThemeData.dark(
+                      useMaterial3: true,
+                    ),
                     locale: store.locale,
                     home: AppLinkHandler(const HomePage())));
           },

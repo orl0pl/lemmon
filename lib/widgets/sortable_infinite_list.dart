@@ -128,7 +128,7 @@ class InfinitePostList extends SortableInfiniteList<PostView> {
     required super.fetcher,
     super.controller,
   }) : super(
-          itemBuilder: (post) => Consumer<AppTheme>(
+          itemBuilder: (post) =>  Consumer<AppTheme>(
               builder: (context, state, child) => Column(
                     children: [
                       PostTile.fromPostView(post),

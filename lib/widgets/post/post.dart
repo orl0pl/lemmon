@@ -99,9 +99,6 @@ class _Post extends HookWidget {
           onTrigger: (action) => loggedInAction(action.invoke)(),
           child: DecoratedBox(
             decoration: BoxDecoration(
-              boxShadow: store.postCardShadow
-                  ? const [BoxShadow(blurRadius: 5, color: Colors.black45)]
-                  : null,
               color: theme.cardColor,
               borderRadius: store.postRoundedCorners
                   ? const BorderRadius.all(Radius.circular(PostTile.rounding))
@@ -147,6 +144,7 @@ class _Post extends HookWidget {
                             const PostTitle(),
                             possiblyBlurred,
                             const PostActions(),
+                            const Divider()
                           ],
                         ),
                       ),
