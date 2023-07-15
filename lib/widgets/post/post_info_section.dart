@@ -29,14 +29,6 @@ class PostInfoSection extends HookWidget {
         padding: const EdgeInsets.all(10),
         child: Row(
           children: [
-            Avatar(
-                url: post.community.icon ?? post.creator.avatar,
-                padding: const EdgeInsets.only(right: 10),
-                onTap: () => Navigator.of(context).push(
-                    CommunityPage.fromIdRoute(instanceHost, post.community.id)),
-                noBlank: true,
-                radius: 15,
-                isNsfw: post.community.nsfw),
             Expanded(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
