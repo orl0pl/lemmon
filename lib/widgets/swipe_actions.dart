@@ -4,15 +4,15 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 
-import '../liftoff_action.dart';
+import '../lemmon_action.dart';
 
 /// Widget that wraps [child] and allows for swipe actions to be performed on it.
 /// [actions] are the actions that can be performed, and [onTrigger] is called
 /// when the user triggers an action.
 class WithSwipeActions extends HookWidget {
   final Widget child;
-  final List<LiftoffAction> actions;
-  final void Function(LiftoffAction) onTrigger;
+  final List<LemmonAction> actions;
+  final void Function(LemmonAction) onTrigger;
 
   const WithSwipeActions(
       {super.key,

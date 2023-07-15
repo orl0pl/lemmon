@@ -1,10 +1,10 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:lemmy_api_client/v3.dart';
-import 'package:liftoff/util/async_store.dart';
+import 'package:lemmon/util/async_store.dart';
 
 void main() {
   group('AsyncStore', () {
-    const instanceHost = 'stable.liftoff-app.org';
+    const instanceHost = 'stable.lemmon-app.org';
     const badInstanceHost = 'does.not.exist';
 
     test('runLemmy works properly all the way through', () async {

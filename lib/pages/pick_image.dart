@@ -34,10 +34,10 @@ class PickImagePage extends HookWidget {
 
     // there has to be a better way....
     var i = 0;
-    while (File('${tempDir.path}/liftoffphoto$i.jpg').existsSync()) {
+    while (File('${tempDir.path}/lemmonphoto$i.jpg').existsSync()) {
       i += 1;
     }
-    final tempFile = File('${tempDir.path}/liftoffphoto$i.jpg');
+    final tempFile = File('${tempDir.path}/lemmonphoto$i.jpg');
 
     final imageIn = img.decodeImage(result!)!;
 

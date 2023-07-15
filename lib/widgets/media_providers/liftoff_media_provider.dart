@@ -1,11 +1,11 @@
 import 'package:path/path.dart';
 
-abstract class LiftoffMediaProvider {
+abstract class LemmonMediaProvider {
   bool providesFor(Uri url);
   Future<Uri> getMediaUrl(Uri url);
 }
 
-class MP4MediaProvider implements LiftoffMediaProvider {
+class MP4MediaProvider implements LemmonMediaProvider {
   const MP4MediaProvider();
 
   @override

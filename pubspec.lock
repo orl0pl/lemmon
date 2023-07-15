@@ -739,7 +739,7 @@ packages:
       path: "."
       ref: master
       resolved-ref: "0d7c53a539b87d8f77405e943e0615fe9fca9ba3"
-      url: "https://github.com/liftoff-app/lemmy_api_client.git"
+      url: "https://github.com/lemmon-app/lemmy_api_client.git"
     source: git
     version: "0.21.0"
   list_diff:

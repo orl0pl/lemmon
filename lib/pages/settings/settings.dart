@@ -390,7 +390,7 @@ class CommentStyleConfigPage extends HookWidget {
   @override
   Widget build(BuildContext context) {
     final postStore =
-        FullPostStore(postId: 51, instanceHost: 'stable.liftoff-app.org');
+        FullPostStore(postId: 51, instanceHost: 'stable.lemmon-app.org');
     // ignore: cascade_invocations
     postStore.sorting = CommentSortType.top;
     // ignore: cascade_invocations

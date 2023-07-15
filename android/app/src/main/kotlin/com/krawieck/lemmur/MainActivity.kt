@@ -1,4 +1,4 @@
-package com.liftoffapp.liftoff
+package com.lemmonapp.lemmon
 
 import io.flutter.embedding.android.FlutterActivity
 
