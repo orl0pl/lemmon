@@ -62,7 +62,7 @@ Future<void> linkLauncher({
   final instances = context.read<AccountsStore>().instances;
 
   // CHECK IF EMAIL STYLE LINK TO COMMUNITY
-  // Format: !liftoff@lemmy.world
+  // Format: !lemmon@lemmy.world
   if (url.startsWith('!')) {
     final splitCommunityName = url.replaceAll(RegExp('!'), '').split('@');
     await Navigator.of(context).push(CommunityPage.fromNameRoute(

@@ -90,12 +90,12 @@ BEGIN
         BLOCK "040904e4"
         BEGIN
             VALUE "CompanyName", "com.krawieck" "\0"
-            VALUE "FileDescription", "Liftoff" "\0"
+            VALUE "FileDescription", "Lemmon" "\0"
             VALUE "FileVersion", VERSION_AS_STRING "\0"
-            VALUE "InternalName", "Liftoff" "\0"
-            VALUE "LegalCopyright", "Copyright (C) 2020 com.liftoffapp. All rights reserved." "\0"
-            VALUE "OriginalFilename", "liftoff.exe" "\0"
-            VALUE "ProductName", "Liftoff" "\0"
+            VALUE "InternalName", "Lemmon" "\0"
+            VALUE "LegalCopyright", "Copyright (C) 2020 com.lemmonapp. All rights reserved." "\0"
+            VALUE "OriginalFilename", "lemmon.exe" "\0"
+            VALUE "ProductName", "Lemmon" "\0"
             VALUE "ProductVersion", VERSION_AS_STRING "\0"
         END
     END

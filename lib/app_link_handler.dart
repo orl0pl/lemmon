@@ -11,11 +11,11 @@ import './util/goto.dart';
 /// - Users
 /// - Posts
 ///
-/// The link format is the same as the web app, with liftoff:// as the scheme.
+/// The link format is the same as the web app, with lemmon:// as the scheme.
 /// For example:
-///  - liftoff://iusearchlinux.fyi/post/33195
-///  - liftoff://programming.dev/c/programmer_humor
-///  - liftoff://lemmy.world/u/zachatrocity
+///  - lemmon://iusearchlinux.fyi/post/33195
+///  - lemmon://programming.dev/c/programmer_humor
+///  - lemmon://lemmy.world/u/zachatrocity
 class AppLinkHandler extends HookWidget {
   AppLinkHandler(this.child);
 

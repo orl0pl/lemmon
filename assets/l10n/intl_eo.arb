@@ -174,7 +174,7 @@
   "remove_user_confirm": "Ĉu forigi uzantkonton?",
   "remove_user_confirm_explanation": "Ĉu vi certas, ke vi volas forigi {user_at_instance}?",
   "set_as_default": "Agordu kiel defaŭltan",
-  "import_settings": "Importi agordojn al Liftoff",
+  "import_settings": "Importi agordojn al Lemmon",
   "import_successful": "Importo sukcesis",
   "add_instance": "Aldonu kazo",
   "instance_added": "Kazo sukcese aldonita",
