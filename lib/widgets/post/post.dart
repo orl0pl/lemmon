@@ -4,7 +4,7 @@ import 'package:lemmy_api_client/v3.dart';
 import 'package:nested/nested.dart';
 
 import '../../hooks/logged_in_action.dart';
-import '../../lemmon_action.dart';
+import '../../liftoff_action.dart';
 import '../../pages/full_post/full_post.dart';
 import '../../stores/config_store.dart';
 import '../../util/async_store_listener.dart';

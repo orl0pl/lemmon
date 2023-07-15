@@ -4,7 +4,7 @@ import 'dart:io';
 import 'package:http/http.dart' as http;
 import 'package:path/path.dart';
 
-import 'lemmon_media_provider.dart';
+import 'liftoff_media_provider.dart';
 
 class RedgifProvider implements LemmonMediaProvider {
   const RedgifProvider();
