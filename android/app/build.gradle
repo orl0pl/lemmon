@@ -118,7 +118,7 @@ android {
             zipAlignEnabled true
         }
     }
-    namespace 'com.liftoffapp.liftoff'
+    namespace 'com.orl0pl.lemmon'
     lint {
         disable 'InvalidPackage'
     }
