@@ -1,4 +1,6 @@
 
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
@@ -7,6 +9,7 @@ import '../app_link_handler.dart';
 import '../hooks/stores.dart';
 import '../util/extensions/brightness.dart';
 import 'communities_tab.dart';
+import 'create_post/create_post_fab.dart';
 import 'home_tab.dart';
 import 'profile_tab.dart';
 import 'search_tab.dart';
@@ -82,6 +85,9 @@ class HomePage extends HookWidget {
           const SizedBox(height: kMinInteractiveDimension / 2),
         ],
       )),
+      floatingActionButton: Platform.isAndroid ? const CreatePostFab() : null,
+      floatingActionButtonLocation:
+          Platform.isAndroid ? FloatingActionButtonLocation.centerDocked : null,
       bottomNavigationBar: NavigationBar(destinations: const [
         NavigationDestination(icon: Icon(Icons.home), label: 'Home'),
         NavigationDestination(icon: Icon(Icons.list), label: 'List'),
@@ -92,6 +98,7 @@ class HomePage extends HookWidget {
       onDestinationSelected: (int index) => {
         currentTab.value = index
       }
+      
       )
       
       // BottomAppBar(
