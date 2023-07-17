@@ -76,8 +76,8 @@ android {
             applicationIdSuffix ".dev"
             versionNameSuffix "-dev"
             manifestPlaceholders = [
-                appName: "liftoff DEV",
-                applicationNameLabel: "Liftoff Dev"
+                appName: "lemmon DEV",
+                applicationNameLabel: "Lemmon Dev"
             ]
             signingConfig signingConfigs.debug
         }
@@ -87,8 +87,8 @@ android {
             applicationIdSuffix ".preview"
             versionNameSuffix "-preview"
             manifestPlaceholders = [
-                appName: "liftoff Preview",
-                applicationNameLabel: "Liftoff Preview"
+                appName: "lemmon Preview",
+                applicationNameLabel: "Lemmon Preview"
             ]
             signingConfig signingConfigs.debug
         }
@@ -96,8 +96,8 @@ android {
         prod {
             dimension "app"
             manifestPlaceholders = [
-                appName: "liftoff",
-                applicationNameLabel: "Liftoff",
+                appName: "lemmon",
+                applicationNameLabel: "Lemmon",
             ]
             signingConfig signingConfigs.prod
         }

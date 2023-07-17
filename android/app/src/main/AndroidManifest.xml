@@ -33,6 +33,7 @@
         <category android:name="android.intent.category.DEFAULT" />
         <category android:name="android.intent.category.BROWSABLE" />
         <data android:scheme="liftoff" />
+        <data android:scheme="lemmon" />
         <!-- Dunnot if lemmy:// URLs are standardized/exist yet, but this can't hurt. -->
         <data android:scheme="lemmy" />
       </intent-filter>
