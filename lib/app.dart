@@ -29,7 +29,7 @@ class MyApp extends StatelessWidget {
           builder: (context, state, child) {
             return ObserverBuilder<ConfigStore>(
                 builder: (context, store) => MaterialApp(
-                    title: 'Liftoff',
+                    title: 'Lemmon',
                     supportedLocales: L10n.supportedLocales,
                     localizationsDelegates: l10nDelegates,
                     themeMode: state.theme,
@@ -38,13 +38,8 @@ class MyApp extends StatelessWidget {
                     //     primaryColor: state.primaryColorDark,
                     //     amoled: state.useAmoled,
                     //     dark: true),
-                    theme: ThemeData(
-                      useMaterial3: true,
-                      colorSchemeSeed: state.primaryColor,
-                    ),
-                    darkTheme: ThemeData.dark(
-                      useMaterial3: true,
-                    ),
+                    theme: ThemeData.from(colorScheme: ColorScheme.fromSeed(seedColor: state.primaryColor, brightness: state.areWeDark ? Brightness.dark : Brightness.light), useMaterial3: true),
+                    
                     locale: store.locale,
                     home: AppLinkHandler(const HomePage())));
           },
