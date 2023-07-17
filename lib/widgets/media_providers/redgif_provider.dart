@@ -4,9 +4,9 @@ import 'dart:io';
 import 'package:http/http.dart' as http;
 import 'package:path/path.dart';
 
-import 'lemmon_media_provider.dart';
+import 'liftoff_media_provider.dart';
 
-class RedgifProvider implements LemmonMediaProvider {
+class RedgifProvider implements LiftoffMediaProvider {
   const RedgifProvider();
   static String? _authToken;
   static RegExp urlExpression = RegExp(r'(www\.)?redgifs\.com');
@@ -18,7 +18,7 @@ class RedgifProvider implements LemmonMediaProvider {
     final headers = {
       HttpHeaders.authorizationHeader: 'Bearer $token',
       HttpHeaders.userAgentHeader:
-          Platform.isAndroid ? 'ExoPlayer' : 'Lemmon/1.0'
+          Platform.isAndroid ? 'ExoPlayer' : 'Liftoff/1.0'
     };
 
     final requestUrl = 'https://api.redgifs.com/v2/gifs/$id';

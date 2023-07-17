@@ -194,10 +194,10 @@ Future<void> main(List<String> args) async {
   final repoCleanup = await cloneLemmyTranslations();
 
   final lemmyTranslations = await loadLemmyStrings();
-  final lemmonTranslations = await loadLemmonStrings();
-  portStrings(lemmyTranslations, lemmonTranslations, force: force);
+  final liftoffTranslations = await loadLiftoffStrings();
+  portStrings(lemmyTranslations, liftoffTranslations, force: force);
 
-  await save(lemmonTranslations);
+  await save(liftoffTranslations);
 
   await repoCleanup();
 
@@ -252,7 +252,7 @@ Future<Map<String, Map<String, String>>> loadLemmyStrings() async {
 }
 
 /// Map<languageTag, Map<stringKey, stringValue>> + some metadata
-Future<Map<String, Map<String, dynamic>>> loadLemmonStrings() async {
+Future<Map<String, Map<String, dynamic>>> loadLiftoffStrings() async {
   final translationsDir = Directory(outDir);
   final translations = <String, Map<String, dynamic>>{};
 
@@ -274,16 +274,16 @@ Future<Map<String, Map<String, dynamic>>> loadLemmonStrings() async {
   return translations;
 }
 
-/// will port them into `lemmonTranslations`
+/// will port them into `liftoffTranslations`
 void portStrings(
   Map<String, Map<String, String>> lemmyTranslations,
-  Map<String, Map<String, dynamic>> lemmonTranslations, {
+  Map<String, Map<String, dynamic>> liftoffTranslations, {
   bool force = false,
 }) {
   // port all languages
   for (final language in lemmyTranslations.keys) {
-    if (!lemmonTranslations.containsKey(language)) {
-      lemmonTranslations[language] = {'@@locale': language};
+    if (!liftoffTranslations.containsKey(language)) {
+      liftoffTranslations[language] = {'@@locale': language};
     }
   }
 
@@ -294,9 +294,9 @@ void portStrings(
       printError('"${migrate.key}" does not exist in $repoName');
     }
 
-    if (lemmonTranslations[baseLanguage]!.containsKey(migrate.renamedKey) &&
+    if (liftoffTranslations[baseLanguage]!.containsKey(migrate.renamedKey) &&
         !force) {
-      confirm('"${migrate.key}" already exists in lemmon, overwrite?');
+      confirm('"${migrate.key}" already exists in liftoff, overwrite?');
     }
 
     final variableName = RegExp(r'{{([\w_]+)}|')
@@ -345,22 +345,22 @@ void portStrings(
       final language = trans.key;
       final strings = trans.value;
 
-      lemmonTranslations[language]![migrate.renamedKey] = transformer(strings);
+      liftoffTranslations[language]![migrate.renamedKey] = transformer(strings);
     }
     final transformed = transformer(baseTranslations);
     if (transformed != null) {
-      lemmonTranslations[baseLanguage]![migrate.renamedKey] =
+      liftoffTranslations[baseLanguage]![migrate.renamedKey] =
           migrate.transform(transformed);
     }
-    lemmonTranslations[baseLanguage]!['@${migrate.renamedKey}'] = metadata;
+    liftoffTranslations[baseLanguage]!['@${migrate.renamedKey}'] = metadata;
   }
 }
 
-Future<void> save(Map<String, Map<String, dynamic>> lemmonTranslations) async {
+Future<void> save(Map<String, Map<String, dynamic>> liftoffTranslations) async {
   // remove null fields
   // Vec<(language, key)>
   final toRemove = <List<String>>[];
-  for (final translations in lemmonTranslations.entries) {
+  for (final translations in liftoffTranslations.entries) {
     final language = translations.key;
 
     for (final strings in translations.value.entries) {
@@ -370,11 +370,11 @@ Future<void> save(Map<String, Map<String, dynamic>> lemmonTranslations) async {
     }
   }
   for (final rem in toRemove) {
-    lemmonTranslations[rem[0]]?.remove(rem[1]);
+    liftoffTranslations[rem[0]]?.remove(rem[1]);
   }
 
-  for (final language in lemmonTranslations.keys) {
+  for (final language in liftoffTranslations.keys) {
     await File('$outDir/$flutterIntlPrefix$language.arb')
-        .writeAsString(jsonEncode(lemmonTranslations[language]));
+        .writeAsString(jsonEncode(liftoffTranslations[language]));
   }
 }

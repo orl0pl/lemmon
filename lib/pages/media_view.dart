@@ -129,7 +129,7 @@ class MediaViewPage extends HookWidget {
                         return;
                       }
                       var result = await GallerySaver.saveImage(file.path,
-                          albumName: 'Lemmon');
+                          albumName: 'Liftoff');
 
                       result ??= false;
 
@@ -140,7 +140,7 @@ class MediaViewPage extends HookWidget {
                       _showSnackBar(context, message);
                     } else if (Platform.isLinux || Platform.isWindows) {
                       final filePath =
-                          '${(await getDownloadsDirectory())!.path}/Lemmon/${basename(file.path)}';
+                          '${(await getDownloadsDirectory())!.path}/Liftoff/${basename(file.path)}';
 
                       File(filePath)
                         ..createSync(recursive: true)

@@ -12,7 +12,7 @@ import 'widgets/post/post_store.dart';
 /// They are currently instantiated using their constructors
 /// directly, but in the future they will be user configurable.
 @immutable
-abstract class LemmonAction {
+abstract class LiftoffAction {
   /// The name of the action, e.g. "Upvote".
   String get name;
 
@@ -70,7 +70,7 @@ class CommentUpvoteAction extends _UpvoteAction {
   bool get isActivated => comment.comment.myVote == VoteType.up;
 }
 
-abstract class _UpvoteAction implements LemmonAction {
+abstract class _UpvoteAction implements LiftoffAction {
   final BuildContext context;
 
   const _UpvoteAction({
@@ -120,7 +120,7 @@ class CommentSaveAction extends _SaveAction {
   bool get isActivated => comment.comment.saved;
 }
 
-abstract class _SaveAction implements LemmonAction {
+abstract class _SaveAction implements LiftoffAction {
   const _SaveAction();
 
   @override

@@ -1,8 +1,8 @@
 cmake_minimum_required(VERSION 3.10)
 project(runner LANGUAGES CXX)
 
-set(BINARY_NAME "Lemmon")
-set(APPLICATION_ID "com.lemmonapp.lemmon")
+set(BINARY_NAME "Liftoff")
+set(APPLICATION_ID "com.liftoffapp.liftoff")
 
 cmake_policy(SET CMP0063 NEW)
 

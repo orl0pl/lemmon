@@ -43,7 +43,7 @@ android {
     }
    
     defaultConfig {
-        applicationId "com.lemmonapp.lemmon"
+        applicationId "com.liftoffapp.liftoff"
         minSdkVersion Math.max(flutter.minSdkVersion, 21)
         targetSdkVersion flutter.targetSdkVersion
         versionCode flutterVersionCode.toInteger()
@@ -76,8 +76,8 @@ android {
             applicationIdSuffix ".dev"
             versionNameSuffix "-dev"
             manifestPlaceholders = [
-                appName: "lemmon DEV",
-                applicationNameLabel: "Lemmon Dev"
+                appName: "liftoff DEV",
+                applicationNameLabel: "Liftoff Dev"
             ]
             signingConfig signingConfigs.debug
         }
@@ -87,8 +87,8 @@ android {
             applicationIdSuffix ".preview"
             versionNameSuffix "-preview"
             manifestPlaceholders = [
-                appName: "lemmon Preview",
-                applicationNameLabel: "Lemmon Preview"
+                appName: "liftoff Preview",
+                applicationNameLabel: "Liftoff Preview"
             ]
             signingConfig signingConfigs.debug
         }
@@ -96,8 +96,8 @@ android {
         prod {
             dimension "app"
             manifestPlaceholders = [
-                appName: "lemmon",
-                applicationNameLabel: "Lemmon",
+                appName: "liftoff",
+                applicationNameLabel: "Liftoff",
             ]
             signingConfig signingConfigs.prod
         }
@@ -118,7 +118,7 @@ android {
             zipAlignEnabled true
         }
     }
-    namespace 'com.lemmonapp.lemmon'
+    namespace 'com.liftoffapp.liftoff'
     lint {
         disable 'InvalidPackage'
     }

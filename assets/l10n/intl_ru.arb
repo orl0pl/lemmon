@@ -175,7 +175,7 @@
   "remove_user_confirm": "Убрать аккаунт пользователя?",
   "remove_user_confirm_explanation": "Уверены что хотите убрать {user_at_instance}?",
   "set_as_default": "Установить умолчально",
-  "import_settings" :"Импорт настроек в Lemmon",
+  "import_settings" :"Импорт настроек в Liftoff",
   "import_successful" : "Импорт успешен",
   
   "add_instance": "Добавить инстанс",

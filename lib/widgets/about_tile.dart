@@ -8,7 +8,7 @@ import '../pages/display_document.dart';
 import '../resources/links.dart';
 import '../url_launcher.dart';
 
-/// Title that opens a dialog with information about Lemmon.
+/// Title that opens a dialog with information about Liftoff.
 /// Licenses, changelog, version etc.
 class AboutTile extends HookWidget {
   const AboutTile();
@@ -63,7 +63,7 @@ class AboutTile extends HookWidget {
           icon: const Icon(Icons.code),
           label: const Text('source code'),
           onPressed: () =>
-              launchLink(link: lemmonRepositoryUrl, context: context),
+              launchLink(link: liftoffRepositoryUrl, context: context),
         ),
         // Never seen a log entry, so let's not bother with this right now.
         // FilledButton.icon(

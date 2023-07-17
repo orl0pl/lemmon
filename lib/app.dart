@@ -28,7 +28,7 @@ class MyApp extends StatelessWidget {
           builder: (context, state, child) {
             return ObserverBuilder<ConfigStore>(
                 builder: (context, store) => MaterialApp(
-                    title: 'Lemmon',
+                    title: 'Liftoff',
                     supportedLocales: L10n.supportedLocales,
                     localizationsDelegates: l10nDelegates,
                     themeMode: state.theme,

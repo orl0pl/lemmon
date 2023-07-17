@@ -4,7 +4,7 @@
 
 ## Issue tracking / Repository
 
-From issues to wikis: everything is on [GitHub](https://github.com/lemmon-app/lemmon)
+From issues to wikis: everything is on [GitHub](https://github.com/liftoff-app/liftoff)
 
 ## Linting / Formatting
 
@@ -14,7 +14,7 @@ Everything is formatted with `dart format` (no flags) and linted with `dart anal
 
 ### Weblate
 
-Lemmy devs are kindly hosting lemmon translation strings on their [Weblate instance](https://weblate.yerbamate.ml/projects/lemmon/lemmon/). Feel free to contribute strings there, we regularly sync string changes with Weblate.
+Lemmy devs are kindly hosting liftoff translation strings on their [Weblate instance](https://weblate.yerbamate.ml/projects/liftoff/liftoff/). Feel free to contribute strings there, we regularly sync string changes with Weblate.
 
 We use flutter's native file format for translations: ARB, which itself uses the ICU message syntax. In most cases you will be able to deduce the syntax based on the source string. Here are 3 important examples:
 
@@ -38,7 +38,7 @@ To contribute time ago strings please send a PR containing a class that implemen
 
 ## Architecture
 
-Lemmon is written in Dart using [Flutter](https://flutter.dev/docs). To communicate with Lemmy instances [lemmy_api_client](https://github.com/lemmon-app/lemmy_api_client) is used.
+Liftoff is written in Dart using [Flutter](https://flutter.dev/docs). To communicate with Lemmy instances [lemmy_api_client](https://github.com/liftoff-app/lemmy_api_client) is used.
 
 ### State management
 
@@ -58,12 +58,12 @@ Lemmon is written in Dart using [Flutter](https://flutter.dev/docs). To communic
 
 ### Things to keep in mind
 
-- Be aware that Lemmon supports arbitrary Lemmy instances, don't hardcode instance urls
+- Be aware that Liftoff supports arbitrary Lemmy instances, don't hardcode instance urls
 - Remember that a user is not obligated to be logged in, contributed widgets should handle this case
 
 ### Lemmy API
 
-LAC (Lemmy API Client) is used to communicate with Lemmy backends, more information can be found [here](https://github.com/lemmon-app/lemmy_api_client).
+LAC (Lemmy API Client) is used to communicate with Lemmy backends, more information can be found [here](https://github.com/liftoff-app/lemmy_api_client).
 
 ### For React developers
 

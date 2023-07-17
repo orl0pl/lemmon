@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.15)
-project(lemmon LANGUAGES CXX)
+project(liftoff LANGUAGES CXX)
 
-set(BINARY_NAME "lemmon")
+set(BINARY_NAME "liftoff")
 
 cmake_policy(SET CMP0063 NEW)
 

@@ -4,7 +4,7 @@
 <dict>
 	<key>com.apple.developer.associated-domains</key>
 	<array>
-		<string>applinks:stable.lemmon-app.org</string>
+		<string>applinks:stable.liftoff-app.org</string>
 	</array>
 </dict>
 </plist>

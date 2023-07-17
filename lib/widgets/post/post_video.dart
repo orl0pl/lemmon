@@ -25,7 +25,7 @@ class _PostVideoState extends State<PostVideo> {
 
     _controller = VideoPlayerController.networkUrl(url, httpHeaders: {
       HttpHeaders.userAgentHeader:
-          Platform.isAndroid ? 'ExoPlayer' : 'Lemmon/1.0'
+          Platform.isAndroid ? 'ExoPlayer' : 'Liftoff/1.0'
     });
 
     _controller

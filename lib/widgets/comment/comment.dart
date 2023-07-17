@@ -9,7 +9,7 @@ import '../../comment_tree.dart';
 import '../../hooks/logged_in_action.dart';
 import '../../hooks/stores.dart';
 import '../../l10n/l10n.dart';
-import '../../lemmon_action.dart';
+import '../../liftoff_action.dart';
 import '../../stores/accounts_store.dart';
 import '../../stores/config_store.dart';
 import '../../util/async_store_listener.dart';

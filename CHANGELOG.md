@@ -41,14 +41,14 @@
 - Added menu item to view a community in a specific instance other than the originating instance (jcgurango)
 - Added shadow to bottom tab bar to visually offset it from cards underneath (swmarks)
 - Added Chrome Custom Tabs / Safari View Controller to replace in app browser on Android & iOS (swmarks)
-- Added deep link support for links like lemmon://lemmy.world/c/lemmon (shocklateboy92)
+- Added deep link support for links like liftoff://lemmy.world/c/liftoff (shocklateboy92)
 - Updated l10n translation hooks, and added strings (mykdavies, zachatrocity)
 - Changed "You're not logged in, log in" message to dismiss after 7 seconds (christopher-conley)
 - Fixed an issue causing login to fail if there is a space after the username (christopher-conley)
 - Changed photo previews in post feed to have a consistent maximum height and updated opening animation (prefanatic)
 
 ## v0.10.4 - 2023-07-02
-- Added support for deep links like lemmon://lemmy.world/c/lemmon (shocklateboy92)
+- Added support for deep links like liftoff://lemmy.world/c/liftoff (shocklateboy92)
 - Fixed an issue preventing adding certain instances (swmarks)
 - Added translate option to menu on posts and comments (mykdavies)
 - Fixed locale not updating (zachatrocity)
@@ -169,7 +169,7 @@ risk of death threats :-)
 - Upgraded SDK and kotlin
 - Various API changes due to app being stale for 4 months
 - Reconfigured build pipeline to support new app name
-- App renamed to Lemmon
+- App renamed to Liftoff
 
 ## v0.9.1 - 2023-06-21
 - Zach learns how to make mistakes
@@ -197,7 +197,7 @@ risk of death threats :-)
 - Blocking of users and communities (from post and from comment)
 - Reporting posts and comments
 - Android theme-aware splash screen (thanks to [@mimi89999](https://github.com/mimi89999))
-- Logging: local logs about some actions/errors. Can be accessed from **settings > about lemmon > logs**
+- Logging: local logs about some actions/errors. Can be accessed from **settings > about liftoff > logs**
 
 ### Fixed
 
@@ -267,7 +267,7 @@ risk of death threats :-)
 ### Added
 
 - Share buttons on windows/linux now copy the data to the clipboard
-- Initial translations have been incorporated into lemmon. It is not yet possible to contribute translation strings
+- Initial translations have been incorporated into liftoff. It is not yet possible to contribute translation strings
 
 ### Changed
 
@@ -306,7 +306,7 @@ WARNING: due to some internal changes your local settings will be reset (logged 
 
 ## v0.2.3 - 2021-02-09
 
-Lemmon is now available on the [play store](https://play.google.com/store/apps/details?id=com.lemmonapp.lemmon) and [f-droid](https://f-droid.org/packages/com.lemmonapp.lemmon)
+Liftoff is now available on the [play store](https://play.google.com/store/apps/details?id=com.liftoffapp.liftoff) and [f-droid](https://f-droid.org/packages/com.liftoffapp.liftoff)
 
 ### Changed
 
@@ -315,7 +315,7 @@ Lemmon is now available on the [play store](https://play.google.com/store/apps/d
 
 ### Fixed
 
-- Fixed issue where the "About lemmon" tile would not appear on Windows/Linux
+- Fixed issue where the "About liftoff" tile would not appear on Windows/Linux
 - Added a bigger bottom margin in the comment section to prevent the floating action button from covering the last comment
 
 ## v0.2.2 - 2021-02-03
@@ -342,7 +342,7 @@ Minimum Lemmy version supported: `v0.9.4`
 
 ### Breaking changes
 
-- Lemmon now works exclusively with Lemmy API v2
+- Liftoff now works exclusively with Lemmy API v2
 
 ### Added
 

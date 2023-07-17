@@ -6,4 +6,4 @@ We don't use any intermediary services that could store your data.
 
 Additionally we do not collect any usage information from your device.
 
-For any questions contact us at lemmonapp@protonmail.com
+For any questions contact us at liftoffapp@protonmail.com

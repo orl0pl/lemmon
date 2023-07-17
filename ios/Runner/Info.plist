@@ -30,10 +30,10 @@
 			<key>CFBundleURLIconFile</key>
 			<string></string>
 			<key>CFBundleURLName</key>
-			<string>org.lemmon-app.lemmon</string>
+			<string>org.liftoff-app.liftoff</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>lemmon</string>
+				<string>liftoff</string>
 			</array>
 		</dict>
 	</array>
