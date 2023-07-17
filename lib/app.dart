@@ -6,7 +6,6 @@ import 'app_link_handler.dart';
 import 'l10n/l10n.dart';
 import 'pages/home_page.dart';
 import 'resources/app_theme.dart';
-import 'resources/theme.dart';
 import 'stores/config_store.dart';
 import 'util/observer_consumers.dart';
 

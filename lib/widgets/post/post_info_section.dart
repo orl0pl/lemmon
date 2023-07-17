@@ -10,7 +10,6 @@ import '../../stores/config_store.dart';
 import '../../util/extensions/api.dart';
 import '../../util/goto.dart';
 import '../../util/observer_consumers.dart';
-import '../avatar.dart';
 import 'post_store.dart';
 
 class PostInfoSection extends HookWidget {

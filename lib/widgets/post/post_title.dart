@@ -22,7 +22,7 @@ class PostTitle extends HookWidget {
             children: [
               Expanded(
                 child: Text(
-                  '${post.name}',
+                 post.name,
                   textAlign: TextAlign.left,
                   softWrap: true,
                   style: TextStyle(
