@@ -9,6 +9,8 @@ import 'resources/app_theme.dart';
 import 'stores/config_store.dart';
 import 'util/observer_consumers.dart';
 
+
+
 final l10nDelegates = [
   ...L10n.localizationsDelegates,
   MaterialLocalizationsEo.delegate,
