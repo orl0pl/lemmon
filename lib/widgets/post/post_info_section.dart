@@ -13,7 +13,7 @@ import '../../util/observer_consumers.dart';
 import 'post_store.dart';
 
 class PostInfoSection extends HookWidget {
-  const PostInfoSection();
+  const PostInfoSection({super.key});
 
   @override
   Widget build(BuildContext context) {
