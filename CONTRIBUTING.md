@@ -4,7 +4,7 @@
 
 ## Issue tracking / Repository
 
-From issues to wikis: everything is on [GitHub](https://github.com/liftoff-app/liftoff)
+From issues to wikis: everything is on [Lifttof GitHub Repo](https://github.com/liftoff-app/liftoff) and [Lemmon Github Repo](https://github.com/orl0pl/lemmon/)
 
 ## Linting / Formatting
 
@@ -38,7 +38,7 @@ To contribute time ago strings please send a PR containing a class that implemen
 
 ## Architecture
 
-Liftoff is written in Dart using [Flutter](https://flutter.dev/docs). To communicate with Lemmy instances [lemmy_api_client](https://github.com/liftoff-app/lemmy_api_client) is used.
+Lemmon is written in Dart using [Flutter](https://flutter.dev/docs). To communicate with Lemmy instances [lemmy_api_client](https://github.com/liftoff-app/lemmy_api_client) is used.
 
 ### State management
 
@@ -58,7 +58,7 @@ Liftoff is written in Dart using [Flutter](https://flutter.dev/docs). To communi
 
 ### Things to keep in mind
 
-- Be aware that Liftoff supports arbitrary Lemmy instances, don't hardcode instance urls
+- Be aware that Lemmon supports arbitrary Lemmy instances, don't hardcode instance urls
 - Remember that a user is not obligated to be logged in, contributed widgets should handle this case
 
 ### Lemmy API

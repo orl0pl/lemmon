@@ -149,8 +149,7 @@ class _UserOverview extends HookWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    final colorOnTopOfAccentColor =
-        textColorBasedOnBackground(theme.colorScheme.secondary);
+    final colorOnTopOfAccentColor = theme.colorScheme.secondary;
 
     return Stack(
       fit: StackFit.expand,
