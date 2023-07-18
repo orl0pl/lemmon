@@ -14,9 +14,9 @@ A fresh mobile client for [Lemmy](https://github.com/LemmyNet/lemmy) - a federat
 
 ## Screenshots
 
-| Home     | Search         |
-| ------------- | ------------- |  ------------- |
-| ![Home screenshot](https://raw.githubusercontent.com/orl0pl/lemmon/7ef45adc754a2357b317d125e0ee666d0c094f78/screenshots/homegreen.jpeg)  | ![7788ed7b-2054-4b93-afbf-dda3fe80c2e8](https://raw.githubusercontent.com/orl0pl/lemmon/7ef45adc754a2357b317d125e0ee666d0c094f78/screenshots/searchgreen.jpeg)  |
+| Home      | Search |
+| ----------- | ----------- |
+| ![Home screenshot](https://raw.githubusercontent.com/orl0pl/lemmon/7ef45adc754a2357b317d125e0ee666d0c094f78/screenshots/homegreen.jpeg)  | ![Search screenshot](https://raw.githubusercontent.com/orl0pl/lemmon/7ef45adc754a2357b317d125e0ee666d0c094f78/screenshots/searchgreen.jpeg) |
 
 - [🍋 Lemmon](#liftoff)
   - [Screenshots](#screenshots)
