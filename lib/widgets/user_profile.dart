@@ -10,7 +10,6 @@ import '../pages/instance/instance.dart';
 import '../pages/manage_account.dart';
 import '../util/extensions/api.dart';
 import '../util/goto.dart';
-import '../util/text_color.dart';
 import 'avatar.dart';
 import 'cached_network_image.dart';
 import 'fullscreenable_image.dart';
