@@ -15,6 +15,7 @@ import '../util/goto.dart';
 import '../widgets/bottom_modal.dart';
 import '../widgets/cached_network_image.dart';
 import '../widgets/infinite_scroll.dart';
+import '../widgets/post/post_store.dart';
 import '../widgets/sortable_infinite_list.dart';
 import 'create_post/create_post.dart';
 import 'full_post/full_post.dart';
@@ -26,7 +27,7 @@ import 'settings/settings.dart';
 /// First thing users sees when opening the app
 /// Shows list of posts from all or just specific instances
 class HomeTab extends HookWidget {
-  const HomeTab();
+  const HomeTab({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -38,7 +39,7 @@ class HomeTab extends HookWidget {
     final showEverythingFeed =
         useStore((ConfigStore store) => store.showEverythingFeed);
 
-    final selectedList = useState(_SelectedList(
+    final selectedList = useState(SelectedList(
         instanceHost: accStore.defaultInstanceHost,
         listingType: accStore.hasNoAccount &&
                 defaultListingType == PostListingType.subscribed
@@ -68,7 +69,7 @@ class HomeTab extends HookWidget {
                   accStore.isAnonymousFor(selectedList.value.instanceHost!)) &&
               selectedList.value.listingType == PostListingType.subscribed ||
           !accStore.instances.contains(selectedList.value.instanceHost)) {
-        selectedList.value = _SelectedList(
+        selectedList.value = SelectedList(
           listingType: accStore.hasNoAccount &&
                   defaultListingType == PostListingType.subscribed
               ? PostListingType.all
@@ -85,10 +86,10 @@ class HomeTab extends HookWidget {
     ]);
 
     handleListChange() async {
-      final val = await showBottomModal<_SelectedList>(
+      final val = await showBottomModal<SelectedList>(
         context: context,
         builder: (context) {
-          pop(_SelectedList thing) => Navigator.of(context).pop(thing);
+          pop(SelectedList thing) => Navigator.of(context).pop(thing);
 
           final everythingChoices = [
             const ListTile(
@@ -111,7 +112,7 @@ class HomeTab extends HookWidget {
               onTap: accStore.hasNoAccount
                   ? null
                   : () => pop(
-                        const _SelectedList(
+                        const SelectedList(
                           listingType: PostListingType.subscribed,
                         ),
                       ),
@@ -124,7 +125,7 @@ class HomeTab extends HookWidget {
               ListTile(
                 title: Text(listingType.value),
                 leading: const SizedBox(width: 20, height: 20),
-                onTap: () => pop(_SelectedList(listingType: listingType)),
+                onTap: () => pop(SelectedList(listingType: listingType)),
               ),
           ];
           return Column(
@@ -177,7 +178,7 @@ class HomeTab extends HookWidget {
                   onTap: accStore.isAnonymousFor(instance)
                       ? () => Navigator.of(context)
                           .push(AddAccountPage.route(instance))
-                      : () => pop(_SelectedList(
+                      : () => pop(SelectedList(
                             listingType: PostListingType.subscribed,
                             instanceHost: instance,
                           )),
@@ -185,7 +186,7 @@ class HomeTab extends HookWidget {
                 ),
                 ListTile(
                   title: Text(L10n.of(context).local),
-                  onTap: () => pop(_SelectedList(
+                  onTap: () => pop(SelectedList(
                     listingType: PostListingType.local,
                     instanceHost: instance,
                   )),
@@ -193,7 +194,7 @@ class HomeTab extends HookWidget {
                 ),
                 ListTile(
                   title: Text(L10n.of(context).all),
-                  onTap: () => pop(_SelectedList(
+                  onTap: () => pop(SelectedList(
                     listingType: PostListingType.all,
                     instanceHost: instance,
                   )),
@@ -206,7 +207,9 @@ class HomeTab extends HookWidget {
       );
       if (val != null) {
         selectedList.value = val;
-        isc.clear();
+        // This will be cleared automatically by the fetcher changing,
+        // since we set `refreshOnFetcherUpdate` to true.
+        // isc.clear();
       }
     }
 
@@ -276,7 +279,7 @@ class HomeTab extends HookWidget {
                           CreatePostPage.route(),
                         );
 
-                        if (postView != null) {
+                        if (postView != null && context.mounted) {
                           await Navigator.of(context)
                               .push(FullPostPage.fromPostViewRoute(postView));
                         }
@@ -327,10 +330,7 @@ class HomeTab extends HookWidget {
                     ];
                   }, onSelected: (value) {
                     if (value == 0) {
-                      // unable to tie a controller to the infinite scroll
-                      // table, for now just reload
-                      // isc.scrollToTop();
-                      isc.clear();
+                      isc.scrollToTop();
                     } else if (value == 1) {
                       isc.clear();
                     } else if (value == 2) {
@@ -355,9 +355,10 @@ class HomeTab extends HookWidget {
 /// Infinite list of posts
 class InfiniteHomeList extends HookWidget {
   final InfiniteScrollController controller;
-  final _SelectedList selectedList;
+  final SelectedList selectedList;
 
   const InfiniteHomeList({
+    super.key,
     required this.selectedList,
     required this.controller,
   });
@@ -370,7 +371,7 @@ class InfiniteHomeList extends HookWidget {
     /// list
     ///
     /// Process of combining them works sort of like zip function in python
-    Future<List<PostView>> generalFetcher(
+    Future<List<PostStore>> generalFetcher(
       int page,
       int limit,
       SortType sort,
@@ -386,14 +387,16 @@ class InfiniteHomeList extends HookWidget {
 
       final futures = [
         for (final instanceHost in instances)
-          LemmyApiV3(instanceHost).run(GetPosts(
-            type: listingType,
-            sort: sort,
-            page: page,
-            limit: limit,
-            savedOnly: false,
-            auth: accStore.defaultUserDataFor(instanceHost)?.jwt.raw,
-          ))
+          LemmyApiV3(instanceHost)
+              .run(GetPosts(
+                type: listingType,
+                sort: sort,
+                page: page,
+                limit: limit,
+                savedOnly: false,
+                auth: accStore.defaultUserDataFor(instanceHost)?.jwt.raw,
+              ))
+              .toPostStores()
       ];
       final instancePosts = await Future.wait(futures);
       final longest = instancePosts.map((e) => e.length).reduce(max);
@@ -407,34 +410,45 @@ class InfiniteHomeList extends HookWidget {
       return newPosts;
     }
 
-    FetcherWithSorting<PostView> fetcherFromInstance(
+    FetcherWithSorting<PostStore> fetcherFromInstance(
             String instanceHost, PostListingType listingType) =>
-        (page, batchSize, sort) => LemmyApiV3(instanceHost).run(GetPosts(
+        (page, batchSize, sort) => LemmyApiV3(instanceHost)
+            .run(GetPosts(
               type: listingType,
               sort: sort,
               page: page,
               limit: batchSize,
               savedOnly: false,
               auth: accStore.defaultUserDataFor(instanceHost)?.jwt.raw,
-            ));
+            ))
+            .toPostStores();
+
+    final memoizedFetcher = useMemoized(
+      () {
+        final selectedInstanceHost = selectedList.instanceHost;
+        return selectedInstanceHost == null
+            ? (page, limit, sort) =>
+                generalFetcher(page, limit, sort, selectedList.listingType)
+            : fetcherFromInstance(
+                selectedInstanceHost, selectedList.listingType);
+      },
+      [selectedList],
+    );
 
     return InfinitePostList(
-      fetcher: selectedList.instanceHost == null
-          ? (page, limit, sort) =>
-              generalFetcher(page, limit, sort, selectedList.listingType)
-          : fetcherFromInstance(
-              selectedList.instanceHost!, selectedList.listingType),
+      fetcher: memoizedFetcher,
+      refreshOnFetcherUpdate: true,
       controller: controller,
     );
   }
 }
 
-class _SelectedList {
+class SelectedList {
   /// when null it implies the 'EVERYTHING' mode
   final String? instanceHost;
   final PostListingType listingType;
 
-  const _SelectedList({
+  const SelectedList({
     required this.listingType,
     this.instanceHost,
   });

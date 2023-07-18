@@ -15,7 +15,7 @@ import 'profile_tab.dart';
 import 'search_tab.dart';
 
 class HomePage extends HookWidget {
-  const HomePage();
+  const HomePage({super.key});
 
   static const List<Widget> pages = [
     HomeTab(),

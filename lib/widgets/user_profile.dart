@@ -15,6 +15,7 @@ import 'avatar.dart';
 import 'cached_network_image.dart';
 import 'fullscreenable_image.dart';
 import 'markdown_text.dart';
+import 'post/post_store.dart';
 import 'sortable_infinite_list.dart';
 
 /// Shared widget of UserPage and ProfileTab
@@ -24,10 +25,11 @@ class UserProfile extends HookWidget {
 
   final FullPersonView? _fullUserView;
 
-  const UserProfile({required this.userId, required this.instanceHost})
+  const UserProfile(
+      {super.key, required this.userId, required this.instanceHost})
       : _fullUserView = null;
 
-  UserProfile.fromFullPersonView(FullPersonView this._fullUserView)
+  UserProfile.fromFullPersonView(FullPersonView this._fullUserView, {super.key})
       : userId = _fullUserView.personView.person.id,
         instanceHost = _fullUserView.instanceHost;
 
@@ -108,7 +110,8 @@ class UserProfile extends HookWidget {
                           ?.jwt
                           .raw,
                     ))
-                    .then((val) => val.posts),
+                    .then((val) => val.posts)
+                    .toPostStores(),
               ),
               Center(
                 child: ConstrainedBox(
