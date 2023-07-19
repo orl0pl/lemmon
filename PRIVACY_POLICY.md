@@ -5,5 +5,3 @@ We don't store your personal data anywhere other than on your device. If you del
 We don't use any intermediary services that could store your data.
 
 Additionally we do not collect any usage information from your device.
-
-For any questions contact us at liftoffapp@protonmail.com
