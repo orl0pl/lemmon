@@ -114,11 +114,6 @@ class AppearanceConfigPage extends StatelessWidget {
                     }
                   },
                 ),
-              SwitchListTile.adaptive(
-                title: Text(L10n.of(context).amoled_dark_mode),
-                value: state.amoledWanted,
-                onChanged: (checked) => state.switchamoled(),
-              ),
               ListTile(
                 title: Wrap(
                   spacing: 10,
