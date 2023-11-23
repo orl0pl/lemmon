@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:lemmy_api_client/v3.dart';
 import 'package:nested/nested.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../hooks/logged_in_action.dart';
 import '../../liftoff_action.dart';

@@ -24,6 +24,7 @@ Future<void> share(
       sharePositionOrigin: sharePositionOrigin,
     );
   } on MissingPluginException {
+    // ignore: use_build_context_synchronously
     await _fallbackShare(text, context: context);
   }
 }

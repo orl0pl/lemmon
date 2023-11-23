@@ -41,6 +41,7 @@ Future<void> _launchCustomTab(BuildContext context, String link) async {
       ),
     );
   } catch (e) {
+    // ignore: use_build_context_synchronously
     ScaffoldMessenger.of(context)
         .showSnackBar(SnackBar(content: Text(e.toString())));
     await ul.launchUrl(Uri.parse(link),

@@ -92,6 +92,7 @@ class WriteComment extends HookWidget {
           Navigator.of(context).pop(res.commentView);
         }
       } catch (e) {
+        // ignore: use_build_context_synchronously
         ScaffoldMessenger.of(context).showSnackBar(
             const SnackBar(content: Text('Failed to post comment')));
       }

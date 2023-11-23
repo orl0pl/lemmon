@@ -168,7 +168,9 @@ class _ToolbarBody extends HookWidget {
                     }
                   }
                 } on Exception catch (_) {
+                  // ignore: use_build_context_synchronously
                   ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                      // ignore: use_build_context_synchronously
                       content: Text(L10n.of(context).failed_to_upload_image)));
                 }
               }),

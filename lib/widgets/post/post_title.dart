@@ -2,13 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 
 import '../../hooks/stores.dart';
-import '../../stores/accounts_store.dart';
 import '../../stores/config_store.dart';
-import '../../util/extensions/api.dart';
 import '../../util/observer_consumers.dart';
 import 'post_store.dart';
 
-import 'package:shared_preferences/shared_preferences.dart';
 
 class PostTitle extends HookWidget {
   const PostTitle({super.key});
