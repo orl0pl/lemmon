@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:lemmy_api_client/v3.dart';
 import 'package:nested/nested.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../hooks/logged_in_action.dart';
 import '../../liftoff_action.dart';
@@ -59,6 +60,8 @@ class PostTile extends StatelessWidget {
   }
 }
 
+
+
 /// A post overview card
 class _Post extends HookWidget {
   const _Post();
@@ -83,6 +86,7 @@ class _Post extends HookWidget {
         ? const NSFWHider(child: sensitiveContent)
         : sensitiveContent;
 
+    
     return GestureDetector(
       onTap: isFullPost
           ? null

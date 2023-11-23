@@ -8,6 +8,8 @@ import '../../util/extensions/api.dart';
 import '../../util/observer_consumers.dart';
 import 'post_store.dart';
 
+import 'package:shared_preferences/shared_preferences.dart';
+
 class PostTitle extends HookWidget {
   const PostTitle({super.key});
 
