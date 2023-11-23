@@ -91,7 +91,6 @@ class _Post extends HookWidget {
       onTap: isFullPost
           ? null
           : () {
-              final postStore = context.read<PostStore>();
               Navigator.of(context)
                   .push(FullPostPage.fromPostStoreRoute(postStore));
             },
@@ -105,7 +104,7 @@ class _Post extends HookWidget {
           child: DecoratedBox(
             decoration: BoxDecoration(
               color: theme.cardColor,
-              borderRadius: store.postRoundedCorners
+              borderRadius: store.postRoundedCornersV2
                   ? const BorderRadius.all(Radius.circular(PostTile.rounding))
                   : null,
             ),
