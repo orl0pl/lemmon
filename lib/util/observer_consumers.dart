@@ -51,7 +51,7 @@ class ObserverListener<T extends Store> extends HookWidget {
         (_) => listener(context, store ?? context.read<T>()),
       );
 
-      return disposer;
+      return disposer.call;
     }, []);
 
     return child;

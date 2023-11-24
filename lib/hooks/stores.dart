@@ -16,7 +16,7 @@ V useStore<S extends Store, V>(V Function(S value) selector) {
   useEffect(() {
     return autorun((_) {
       state.value = selector(store);
-    });
+    }).call;
   }, []);
 
   return state.value;

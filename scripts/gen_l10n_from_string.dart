@@ -1,4 +1,5 @@
 /// creates a file with l10n translations from string
+library;
 import 'dart:convert';
 import 'dart:io';
 

@@ -1,5 +1,7 @@
 // ignore_for_file: avoid_print
 /// Used to create a new liftoff release. Bumps semver, build number, updates changelog, fastlane, pubspec, and finishes by adding a git tag
+library;
+
 import 'dart:io';
 
 import 'common.dart';
