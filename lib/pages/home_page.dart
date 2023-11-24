@@ -1,4 +1,3 @@
-// ignore-for-file: deprecated_member_use
 import 'dart:io';
 
 import 'package:flutter/material.dart';
@@ -60,14 +59,14 @@ class HomePage extends HookWidget {
             .then(
                 (SnackBarClosedReason reason) => snackBarShowing.value = false);
 
-        return Future(() => false);
+        return false;
       }
       if (currentTab.value != 0) {
         currentTab.value = 0;
-        return Future(() => false);
+        return false;
       }
 
-      return Future(() => true);
+      return true;
     }
 
     return Scaffold(
@@ -75,8 +74,8 @@ class HomePage extends HookWidget {
         body: AppLinkHandler(Column(
           children: [
             Expanded(
-              child: WillPopScope(
-                  onWillPop: onWillPopHandler,
+              child: PopScope(
+                  canPop: onWillPopHandler(),
                   child: IndexedStack(
                     index: currentTab.value,
                     children: pages,
