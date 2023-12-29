@@ -18,7 +18,7 @@ jobs:
 
       - uses: subosito/flutter-action@v1
         with:
-          channel: "stable"
+          flutter-version: '3.10.6'
 
       - name: Disable telemetry
         run: flutter --disable-analytics
@@ -55,20 +55,15 @@ jobs:
 
       - uses: subosito/flutter-action@v1
         with:
-          channel: "stable"
+          flutter-version: '3.10.6'
       
       - name: Android build (Pull Request)
         if: github.event_name == 'pull_request'
-        env:
-          ANDROID_KEY_ALIAS: androiddebugkey
-          ANDROID_KEY_PASSWORD: android
-          ANDROID_STORE_PATH: key.jks
-          ANDROID_STORE_PASSWORD: android
-        run: flutter build apk --split-per-abi --release --target lib/main_prod.dart --flavor preview
+        run: flutter build apk --release --target lib/main_prod.dart --flavor preview
       
       - name: Android build (Master Branch)
         if: github.event_name != 'pull_request'
-        run: flutter build apk --split-per-abi --release --target lib/main_prod.dart --flavor preview
+        run: flutter build apk --release --target lib/main_prod.dart 
 
       - uses: actions/upload-artifact@v2
         with:
