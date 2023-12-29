@@ -65,20 +65,9 @@ jobs:
           ANDROID_STORE_PATH: key.jks
           ANDROID_STORE_PASSWORD: android
         run: flutter build apk --split-per-abi --release --target lib/main_prod.dart --flavor preview
-
-      - name: Inject keystore
-        working-directory: android/app
-        if: github.event_name != 'pull_request'
-        run: |
-          echo "${{ secrets.SIGNING_KEY }}" | base64 -d | tee key.jks >/dev/null
       
       - name: Android build (Master Branch)
         if: github.event_name != 'pull_request'
-        env:
-          ANDROID_KEY_ALIAS: ${{ secrets.ALIAS }}
-          ANDROID_KEY_PASSWORD: ${{ secrets.KEY_PASSWORD }}
-          ANDROID_STORE_PATH: key.jks
-          ANDROID_STORE_PASSWORD: ${{ secrets.KEY_STORE_PASSWORD }}
         run: flutter build apk --split-per-abi --release --target lib/main_prod.dart --flavor preview
 
       - uses: actions/upload-artifact@v2
