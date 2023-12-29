@@ -21,7 +21,7 @@ jobs:
           flutter-version: '3.10.6'
 
       - name: Disable telemetry
-        run: flutter --disable-analytics
+        run: flutter --disable-telemetry
         
       - name: Get dependencies
         run: flutter pub get
