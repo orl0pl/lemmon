@@ -1,5 +1,6 @@
 /// migrates chosen strings from lemmy-translations into flutter's i18n solution
 /// uses prettier to format the files
+library;
 import 'dart:convert';
 import 'dart:io';
 

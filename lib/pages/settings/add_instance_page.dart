@@ -40,10 +40,10 @@ class AddInstancePage extends HookWidget {
     });
 
     useEffect(() {
-      instanceController.addListener(debounce);
+      instanceController.addListener(debounce.call);
 
       return () {
-        instanceController.removeListener(debounce);
+        instanceController.removeListener(debounce.call);
       };
     }, []);
 
@@ -56,6 +56,7 @@ class AddInstancePage extends HookWidget {
           Navigator.of(context).pop(inst);
         }
       } on Exception catch (err) {
+        // ignore: use_build_context_synchronously
         ScaffoldMessenger.of(context).showSnackBar(SnackBar(
           content: Text(err.toString()),
         ));

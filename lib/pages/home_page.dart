@@ -1,4 +1,3 @@
-
 import 'dart:io';
 
 import 'package:flutter/material.dart';
@@ -48,74 +47,72 @@ class HomePage extends HookWidget {
       return null;
     }, [accStore.defaultInstanceHost]);
 
+    onWillPopHandler() {
+      if (currentTab.value == 0 && !snackBarShowing.value) {
+        // show snackbar warning
+        snackBarShowing.value = true;
+        ScaffoldMessenger.of(context)
+            .showSnackBar(const SnackBar(
+              content: Text('Tap back again to leave'),
+            ))
+            .closed
+            .then(
+                (SnackBarClosedReason reason) => snackBarShowing.value = false);
 
+        return false;
+      }
+      if (currentTab.value != 0) {
+        currentTab.value = 0;
+        return false;
+      }
+
+      return true;
+    }
 
     return Scaffold(
-      extendBody: true,
-      body: AppLinkHandler(Column(
-        children: [
-          Expanded(
-            child: WillPopScope(
-                onWillPop: () {
-                  if (currentTab.value == 0 && !snackBarShowing.value) {
-                    // show snackbar warning
-                    snackBarShowing.value = true;
-                    ScaffoldMessenger.of(context)
-                        .showSnackBar(const SnackBar(
-                          content: Text('Tap back again to leave'),
-                        ))
-                        .closed
-                        .then((SnackBarClosedReason reason) =>
-                            snackBarShowing.value = false);
+        extendBody: true,
+        body: AppLinkHandler(Column(
+          children: [
+            Expanded(
+              child: PopScope(
+                  canPop: onWillPopHandler(),
+                  child: IndexedStack(
+                    index: currentTab.value,
+                    children: pages,
+                  )),
+            ),
+            const SizedBox(height: kMinInteractiveDimension / 2),
+          ],
+        )),
+        floatingActionButton: Platform.isAndroid ? const CreatePostFab() : null,
+        floatingActionButtonLocation: Platform.isAndroid
+            ? FloatingActionButtonLocation.centerDocked
+            : null,
+        bottomNavigationBar: NavigationBar(
+            destinations: const [
+              NavigationDestination(icon: Icon(Icons.home), label: 'Home'),
+              NavigationDestination(icon: Icon(Icons.list), label: 'List'),
+              NavigationDestination(icon: Icon(Icons.search), label: 'Search'),
+              NavigationDestination(icon: Icon(Icons.person), label: 'Profile')
+            ],
+            selectedIndex: currentTab.value,
+            onDestinationSelected: (int index) => {currentTab.value = index})
 
-                    return Future(() => false);
-                  }
-                  if (currentTab.value != 0) {
-                    currentTab.value = 0;
-                    return Future(() => false);
-                  }
-
-                  return Future(() => true);
-                },
-                child: IndexedStack(
-                  index: currentTab.value,
-                  children: pages,
-                )),
-          ),
-          const SizedBox(height: kMinInteractiveDimension / 2),
-        ],
-      )),
-      floatingActionButton: Platform.isAndroid ? const CreatePostFab() : null,
-      floatingActionButtonLocation:
-          Platform.isAndroid ? FloatingActionButtonLocation.centerDocked : null,
-      bottomNavigationBar: NavigationBar(destinations: const [
-        NavigationDestination(icon: Icon(Icons.home), label: 'Home'),
-        NavigationDestination(icon: Icon(Icons.list), label: 'List'),
-        NavigationDestination(icon: Icon(Icons.search), label: 'Search'),
-        NavigationDestination(icon: Icon(Icons.person), label: 'Profile')
-      ],
-      selectedIndex: currentTab.value,
-      onDestinationSelected: (int index) => {
-        currentTab.value = index
-      }
-      
-      )
-      
-      // BottomAppBar(
-      //   child: SizedBox(
-      //     height: 60,
-      //     child: Row(
-      //       mainAxisAlignment: MainAxisAlignment.spaceAround,
-      //       children: [
-      //         tabButton(Icons.home),
-      //         tabButton(Icons.list),
-      //         tabButton(Icons.add),
-      //         tabButton(Icons.search),
-      //         tabButton(Icons.person),
-      //       ],
-      //     ),
-      //   ),
-      // ),
-    );
+        // BottomAppBar(
+        //   child: SizedBox(
+        //     height: 60,
+        //     child: Row(
+        //       mainAxisAlignment: MainAxisAlignment.spaceAround,
+        //       children: [
+        //         tabButton(Icons.home),
+        //         tabButton(Icons.list),
+        //         tabButton(Icons.add),
+        //         tabButton(Icons.search),
+        //         tabButton(Icons.person),
+        //       ],
+        //     ),
+        //   ),
+        // ),
+        );
   }
 }

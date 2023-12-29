@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:lemmy_api_client/v3.dart';
 import 'package:nested/nested.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../hooks/logged_in_action.dart';
 import '../../liftoff_action.dart';
@@ -91,7 +90,6 @@ class _Post extends HookWidget {
       onTap: isFullPost
           ? null
           : () {
-              final postStore = context.read<PostStore>();
               Navigator.of(context)
                   .push(FullPostPage.fromPostStoreRoute(postStore));
             },
@@ -105,7 +103,7 @@ class _Post extends HookWidget {
           child: DecoratedBox(
             decoration: BoxDecoration(
               color: theme.cardColor,
-              borderRadius: store.postRoundedCorners
+              borderRadius: store.postRoundedCornersV2
                   ? const BorderRadius.all(Radius.circular(PostTile.rounding))
                   : null,
             ),

@@ -63,12 +63,12 @@ abstract class _ConfigStore with Store {
   bool compactPostView = false;
 
   @observable
-  @JsonKey(defaultValue: true)
-  bool postRoundedCorners = true;
+  @JsonKey(defaultValue: false)
+  bool postRoundedCornersV2 = false;
 
   @observable
-  @JsonKey(defaultValue: true)
-  bool postCardShadow = true;
+  @JsonKey(defaultValue: false)
+  bool postCardShadowV2 = false;
 
   @observable
   @JsonKey(defaultValue: true)
@@ -81,6 +81,10 @@ abstract class _ConfigStore with Store {
   @observable
   @JsonKey(defaultValue: true)
   bool blurNsfw = true;
+
+  @observable
+  @JsonKey(defaultValue: <String>[])
+  List<String> instanceFilter = [];
 
   @observable
   @JsonKey(defaultValue: true)
